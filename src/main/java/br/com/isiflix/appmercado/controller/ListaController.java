@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 public class ListaController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class ListaController {
         return ResponseEntity.ok(service.buscarTodas());
     }
 
-    @GetMapping("/listas/{id")
+    @GetMapping("/listas/{id}")
     public ResponseEntity<Lista> buscarPeloId(@PathVariable Integer id) {
         Lista res = service.buscarPeloId(id);
         if (res != null) {
@@ -36,7 +37,7 @@ public class ListaController {
         return ResponseEntity.badRequest().build();
     }
 
-    @PutMapping("/listas/{id}")
+    @PutMapping("/lista/{id}")
     public ResponseEntity<Lista> alterarLista(@PathVariable Integer id) {
         Lista res = service.fecharLista(id);
         if (res != null) {
@@ -45,7 +46,7 @@ public class ListaController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("/listas/{id}")
+    @DeleteMapping("/lista/{id}")
     public ResponseEntity<?> removerLista(@PathVariable Integer id) {
         service.removerLista(id);
         return ResponseEntity.ok("Ok");

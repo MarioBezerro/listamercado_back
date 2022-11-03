@@ -1,6 +1,8 @@
 package br.com.isiflix.appmercado.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -27,6 +29,7 @@ public class ItemLista {
 
     @ManyToOne
     @JoinColumn(name = "tbl_lista_id_lista")
+    @JsonIgnoreProperties("lista")
     private Lista lista;
 
     public Integer getNumSeq() {
